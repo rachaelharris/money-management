@@ -51,10 +51,10 @@ public class finalProject extends JFrame implements ActionListener{
   JFrame ThreeResult = new JFrame();
 
   finalProject() {
-    welcome.setTitle("Human Rights Interactive");
-    JLabel beginning = new JLabel("Welcome to the Human Rights Interactive Program!");
+    welcome.setTitle("Money Management");
+    JLabel beginning = new JLabel("Welcome to the Money Management Game");
     welcome.add(beginning, BorderLayout.CENTER);
-    String text = "This program is designed to test and further your experience with Human Rights. This program will use your level of experience to determine what information to provide you with and what resources you might want to check out! It will also use a series of trivia questions to challenge your knowledge.";
+    String text = "This program is designed to encourage financial responsibility on behalf of an adolescent while creating an environment for parents and children to collaborate together. The game will feature a series of events, similar to that of popular board games. As a parent, you can encourage your child, add money to their account, and monitor their progress. As a child player, you can choose to deposit money, spend it, and check your progres! Let's get started!";
     JTextArea textArea = new JTextArea(2, 40);
     textArea.setText(text);
     textArea.setWrapStyleWord(true);
@@ -63,7 +63,7 @@ public class finalProject extends JFrame implements ActionListener{
     textArea.setEditable(false);
     textArea.setFocusable(false);
     welcome.add(textArea, BorderLayout.CENTER);
-    JButton button = new JButton("Next");
+    JButton button = new JButton("Get Started!");
     button.setBounds(300, 150, 80, 80);
     welcome.add(button);
     button.addActionListener(this);
@@ -74,15 +74,16 @@ public class finalProject extends JFrame implements ActionListener{
     welcome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-    level.setTitle("Human Rights Interactive");
-    JLabel label = new JLabel("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tWhat is your current background on Human Rights?");
+    level.setTitle("Money Management");
+    JLabel label = new JLabel("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\Are you a parent or a child player?");
     level.add(label);
-    JButton button1 = new JButton("Very Little or None at All");
+    JButton button1 = new JButton("Parent");
     level.add(button1);
     button1.addActionListener(this);
-    JButton button2 = new JButton("Intermediary");
+    JButton button2 = new JButton("Child Player");
     level.add(button2);
     button2.addActionListener(this);
+    //delete button 3
     JButton button3 = new JButton("Above Average or Extensive");
     level.add(button3);
     button3.addActionListener(this);

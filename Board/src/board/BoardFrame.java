@@ -75,7 +75,7 @@ public class finalProject extends JFrame implements ActionListener{
 
 
     level.setTitle("Money Management");
-    JLabel label = new JLabel("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\Are you a parent or a child player?");
+    JLabel label = new JLabel("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Are you a parent or a child player?");
     level.add(label);
     JButton button1 = new JButton("Parent");
     level.add(button1);
@@ -683,7 +683,7 @@ public class finalProject extends JFrame implements ActionListener{
 
   public void actionPerformed(ActionEvent ae) {
       String choice = ae.getActionCommand();
-      if (choice.equals("Next")) {
+      if (choice.equals("Get Started!")) {
         level.setVisible(true);
         welcome.setVisible(false);
       }

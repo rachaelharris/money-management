@@ -7,7 +7,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class Board {
+public class AlternateBoard {
 
     public static int smoney = 500;
     public static int savings;
@@ -32,7 +32,7 @@ public class Board {
                 "The player begins the game at 'START (position 0) and \"rolls the die\" (6 sided) and moves the number of blocks indicated.");
         System.out.println("The player wins when they move past the last block to the Finish area.");
 
-        // if the block is trick or treat, it will have value 1, otherwise it is 0 by
+        // if the block is money spent, it will have value 1, otherwise it is 0 by
         // default
         blocks[3] = 1;
         blocks[7] = 1;
@@ -97,10 +97,10 @@ public class Board {
         return r.nextInt((max - min) + 1) + min;
     }
 
-    public static void MoneyTracker(int value, boolean isTrickorTreat) {
+    public static void MoneyTracker(int value, boolean isMoneySpent) {
 
         current += value;
-        if (isTrickorTreat == false) {
+        if (isMoneySpent == false) {
 
             total_moves += 1;
         }
@@ -116,23 +116,23 @@ public class Board {
         if (current >= 16) {
             surprise_win();
         }
-        // if current block is a trick or treat block
+        // if current block is a money spent block
         else if (blocks[current] == 1) {
             System.out.print("SPEND!!");
             // generate a random number between 1 to 4
-            int trick = getRandomNumberInRange(1, 4);
-            if (trick == 1) {
-                // go ahead two blocks;
+            int shmoney = getRandomNumberInRange(1, 4);
+            if (shmoney == 1) {
+                // spend 100
                 System.out.println("You have to eat right Groceries $100");
                 MoneyTracker(smoney - 100, true);
                 mspent = 100;
-            } else if (trick == 2) {
-                // go back 3 steps
+            } else if (shmoney == 2) {
+                // spend 200
                 System.out.println("Bills need to be paid $200.");
                 MoneyTracker(smoney - 200, true);
                 mspent = 200;
 
-            } else if (trick == 3) {
+            } else if (shmoney == 3) {
                 // go back to start.
                 System.out.println("Back to start");
                 MoneyTracker(current * (-1), true);

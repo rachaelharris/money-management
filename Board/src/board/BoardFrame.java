@@ -7,17 +7,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import java.util.Random;
 
-/**
-Unused Imports
-import java.awt.event.*;
-import java.awt.Graphics;
-import javax.swing.JPanel;
-import java.awt.Container;
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.JApplet;
-*/
-
 public class BoardFrame extends JFrame implements ActionListener{
   JFrame welcome = new JFrame(); //first frame, introduces program
   JFrame level = new JFrame(); //second frame, asks the user to indicate their level -- parent or child player

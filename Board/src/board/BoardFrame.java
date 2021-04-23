@@ -30,7 +30,11 @@ public class BoardFrame extends JFrame implements ActionListener{
   JButton HomeView = new JButton("Home"); //extra home button for certain frames on parent pov
   JButton Back = new JButton("Back"); //extra back button for parental settings page
   JButton Previous = new JButton("Previous"); //extra back button for About Page
+  JButton PreviousView = new JButton("Home Page"); //extra back button for check status page
+  JButton BackAgain = new JButton("Previous Page"); //extra back button for Global page
   JButton ParentalSettings = new JButton("Parent Settings"); //change settings from parental pov
+  public int savingsAccount = 0;
+  public double scoreStatus = (savingsAccount / 100) * 0.1234;
 
   BoardFrame() {
     welcome.setTitle("Money Management");
@@ -159,7 +163,7 @@ public class BoardFrame extends JFrame implements ActionListener{
     Status.setTitle("Money Management");
     JLabel StatusLabel = new JLabel("Status");
     Status.add(StatusLabel);
-    JLabel StatusText = new JLabel("Name: [insert child name] \tScore: [insert child score]");
+    JLabel StatusText = new JLabel("Name: [insert child name] \tAmount in savings account: $" + savingsAccount + "\tscore: " + scoreStatus);
     Status.add(StatusText);
     //@ front end team <3 add more / make this look nice
     //also, try to add recent transactions if you can (these can be hard coded)
@@ -234,7 +238,11 @@ public class BoardFrame extends JFrame implements ActionListener{
       else if (choice.equals("Deposit")) {
         DepositMoney.setVisible(true);
         Parents.setVisible(false);
-        JOptionPane.showInputDialog("Deposit Amount:");
+        String value = JOptionPane.showInputDialog("Deposit Amount:");
+        int amount = Integer.parseInt(value);
+        savingsAccount += amount;
+        String output = "Current Savings Amount is: $" + Integer.valueOf(savingsAccount);
+        JOptionPane.showMessageDialog(null, output);
         DepositMoney.setVisible(false);
         Parents.setVisible(true);
       }
@@ -310,38 +318,29 @@ public class BoardFrame extends JFrame implements ActionListener{
         ParentSettings.setVisible(false);
       }
 
-
-      //else if (choice.equals("Settings")) {
-        //OneQuestion3.setVisible(true);
-        //OneQuestion2.setVisible(false);
-      //}
-
-      /*
-      else if (choice.equals("True")) {
-        JOptionPane.showMessageDialog(null, "The answer you have chosen is incorrect.", "Question 3", JOptionPane.ERROR_MESSAGE);
+      else if(choice.equals("Check Status")) {
+        Child.setVisible(false);
+        Status.setVisible(true);
       }
-*/
+
+      else if(choice.equals("Home Page")) {
+        Child.setVisible(true);
+        Status.setVisible(false);
       }
+
+      else if(choice.equals("Global")) {
+        Child.setVisible(false);
+        Global.setVisible(false);
+      }
+
+      else if(choice.equals("Previous Page")) {
+        Child.setVisible(true);
+        Global.setVisible(false);
+      }
+      }
+
 
   public static void main (String[] args) {
     new BoardFrame();
   }
 }
-
-
-/*
-https://www.proprofs.com/quiz-school/quizshow.php?title=mte3mzu3oq9ldf&q=3
-https://www.guru99.com/java-swing-gui.html
-https://www.geeksforgeeks.org/creating-frames-using-swings-java/
-https://javatutorial.net/display-text-and-graphics-java-jframe
-https://javatutorial.net/java-swing-jframe-layouts
-https://javatutorial.net/jframe-buttons-listeners-text-fields
-https://stackoverflow.com/questions/5766175/word-wrap-in-jbuttons
-https://www.experts-exchange.com/questions/27444198/Linking-two-JFrame-Frames-using-a-JButton.html
-https://www.un.org/en/universal-declaration-human-rights/
-http://www.coalitionfortheicc.org/news/20160930/what-universal-declaration-human-rights
-https://www.weforum.org/agenda/2015/12/10-things-to-know-about-human-rights/
-https://www.responsiblebusiness.com/sdg-action/prosperity-news/7-interesting-facts-about-human-rights/
-https://www.amnestyusa.org/9-eye-opening-facts-about-the-state-of-human-rights-worldwide/
-https://www.equalityhumanrights.com/en/secondary-education-resources/useful-information/understanding-human-rights
-*/

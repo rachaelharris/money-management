@@ -21,6 +21,10 @@ public class BoardFrame extends JFrame implements ActionListener{
   JFrame Status = new JFrame(); //status checker
   JFrame Global = new JFrame(); //global leadership
   JFrame Settings = new JFrame(); //settings page
+  JButton Home = new JButton("Home");
+  JButton StatusChecker = new JButton("Check Status");
+  JButton GlobalStatus = new JButton("Global");
+  JButton SettingsButton = new JButton("Settings");
 
   BoardFrame() {
     welcome.setTitle("Money Management");
@@ -45,16 +49,6 @@ public class BoardFrame extends JFrame implements ActionListener{
     welcome.setResizable(false);
     welcome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    //default buttons for every frame
-    JButton Home = new JButton("Home");
-    Home.addActionListener(this);
-    JButton Status = new JButton("Status");
-    Status.addActionListener(this);
-    JButton Global = new JButton("Global");
-    Global.addActionListener(this);
-    JButton Settings = new JButton("Settings");
-    Settings.addActionListener(this);
-
     level.setTitle("Money Management");
     JLabel label = new JLabel("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Are you a parent or a child player?");
     level.add(label);
@@ -71,37 +65,51 @@ public class BoardFrame extends JFrame implements ActionListener{
 
     Parents.setTitle("Money Management");
     JLabel ParentView = new JLabel("Parent View");
+    ParentView.setText("Parent View");
     Parents.add(ParentView);
-    JButton Deposit = new JButton("Deposit"); //Parents can choose to deposit money into the child's account. This can be done as an allowance or a gift.
+    JButton Deposit = new JButton("Deposit");
+    Deposit.setText("Deposit");
     Parents.add(Deposit);
     Deposit.addActionListener(this);
-    JButton Message = new JButton("Message"); //Parents can message their children to show their support and to encourage collaboration. Parents can send tips to children via this feature as well!
+    JButton Message = new JButton("Message");
+    Message.setText("Message");
     Parents.add(Message);
     Message.addActionListener(this);
-    //Parents can check the status of their children in the game by seeing the amount in their game account and seeing their recent transactions listed.
-    Parents.add(Status);
-    JButton AddParent = new JButton("Add a new Parent"); //Parents can add another parent or guardian to the game to view as well!
+    JButton AddParent = new JButton("Add a new Parent");
+    AddParent.setText("Add a new Parent");
     Parents.add(AddParent);
     AddParent.addActionListener(this);
+    Parents.add(Home);
+    Home.addActionListener(this);
+    Parents.add(StatusChecker);
+    StatusChecker.addActionListener(this);
+    Parents.add(GlobalStatus);
+    GlobalStatus.addActionListener(this);
+    Parents.add(SettingsButton);
+    SettingsButton.addActionListener(this);
     Parents.setSize(500, 500);
     Parents.setLayout(new GridLayout(4,2));
-    Parents.setResizable(false);
+    Parents.setResizable(true);
     Parents.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     Child.setTitle("Money Management");
     JLabel ChildVeiw = new JLabel("Child View");
-    Child.add(ChildView);
+    Child.add(ChildVeiw);
     JButton Roll = new JButton();
     Roll.setText("Roll");
     Child.add(Roll);
     Roll.addActionListener(this);
     Child.add(Home);
-    Child.add(Status);
-    Child.add(Global);
-    Child.add(Settings);
+    Home.addActionListener(this);
+    Child.add(GlobalStatus);
+    GlobalStatus.addActionListener(this);
+    Child.add(SettingsButton);
+    SettingsButton.addActionListener(this);
+    Child.add(StatusChecker);
+    StatusChecker.addActionListener(this);
     Child.setSize(500, 500);
     Child.setLayout(new GridLayout(4,2));
-    Child.setResizable(false);
+    Child.setResizable(true);
     Child.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     Global.setTitle("Money Management");
@@ -130,7 +138,7 @@ public class BoardFrame extends JFrame implements ActionListener{
     Settings.add(AddInfo);
     AddInfo.addActionListener(this);
     JButton InviteFriends = new JButton();
-    InviteFreinds.setText("Invite Friends");
+    InviteFriends.setText("Invite Friends");
     Settings.add(InviteFriends);
     InviteFriends.addActionListener(this);
     JButton FAQ = new JButton();
@@ -140,7 +148,7 @@ public class BoardFrame extends JFrame implements ActionListener{
     JButton About = new JButton();
     About.setText("About");
     Settings.add(About);
-    Add.addActionListener(this);
+    About.addActionListener(this);
     JButton Contact = new JButton();
     Contact.setText("Contact Us");
     Settings.add(Contact);
@@ -170,10 +178,10 @@ public class BoardFrame extends JFrame implements ActionListener{
       }
 
 
-      else if (choice.equals("Settings")) {
-        OneQuestion3.setVisible(true);
-        OneQuestion2.setVisible(false);
-      }
+      //else if (choice.equals("Settings")) {
+        //OneQuestion3.setVisible(true);
+        //OneQuestion2.setVisible(false);
+      //}
 
       /*
       else if (choice.equals("True")) {

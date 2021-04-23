@@ -28,6 +28,7 @@ public class BoardFrame extends JFrame implements ActionListener{
   JButton ChangeView = new JButton("Change POV"); //button to switch from parent to child pov
   JButton ChangePov = new JButton("Change View"); //button to switch from child to parent pov
   JButton StatusChecker = new JButton("Check Status"); //check score and transactions for child
+  JButton MessageChecker = new JButton("Check Messages"); //check status of messages from parent to child from child's pov.
   JButton GlobalStatus = new JButton("Global"); //check global ranking for child
   JButton Transactions = new JButton("Check Transactions"); //check transaction log from parents point of view
   JButton HomeView = new JButton("Home"); //extra home button for certain frames on parent pov
@@ -38,6 +39,7 @@ public class BoardFrame extends JFrame implements ActionListener{
   JButton ParentalSettings = new JButton("Parent Settings"); //change settings from parental pov
   public int savingsAccount = 0;
   public double scoreStatus = (savingsAccount / 100) * 0.1234;
+  public String message = "";
 
   BoardFrame() {
     welcome.setTitle("Money Management");
@@ -122,6 +124,8 @@ public class BoardFrame extends JFrame implements ActionListener{
     //Adding status checker button from other class
     Child.add(StatusChecker);
     StatusChecker.addActionListener(this);
+    Child.add(MessageChecker);
+    MessageChecker.addActionListener(this);
     Child.setSize(500, 500);
     Child.setLayout(new GridLayout(4,2));
     Child.setResizable(false);
@@ -254,7 +258,8 @@ public class BoardFrame extends JFrame implements ActionListener{
 
       else if (choice.equals("Message")) {
         Parents.setVisible(false);
-        JOptionPane.showInputDialog("Message:");
+        String value = JOptionPane.showInputDialog("Message:");
+        message = value;
         Parents.setVisible(true);
       }
 
@@ -336,6 +341,19 @@ public class BoardFrame extends JFrame implements ActionListener{
       else if(choice.equals("Check Status")) {
         Child.setVisible(false);
         Status.setVisible(true);
+      }
+
+      else if (choice.equals("Check Messages")) {
+        Child.setVisible(false);
+        if (message.equals("")){
+          String out = "No Messages at this time";
+          JOptionPane.showMessageDialog(null, out);
+          Child.setVisible(true);
+        }
+        else {
+          JOptionPane.showMessageDialog(null, message);
+          Child.setVisible(true);
+        }
       }
 
       else if(choice.equals("Roll")) {

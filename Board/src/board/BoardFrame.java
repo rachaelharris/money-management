@@ -50,7 +50,7 @@ public class finalProject extends JFrame implements ActionListener{
   JFrame ThreeQuestion10 = new JFrame(); //tenth question for the hardest level
   JFrame ThreeResult = new JFrame();
 
-  finalProject() {
+  BoardFrame() {
     welcome.setTitle("Money Management");
     JLabel beginning = new JLabel("Welcome to the Money Management Game");
     welcome.add(beginning, BorderLayout.CENTER);

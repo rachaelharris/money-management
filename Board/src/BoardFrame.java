@@ -72,8 +72,8 @@ public class BoardFrame extends JFrame implements ActionListener{
     JLabel title = new JLabel("\t\t\t\t\t\t\t\t\t\t\t\t\t");
     Parents.add(title, BorderLayout.CENTER);
     String PVtxt = "Parent View";
-    JTextArea ParentViewText = new JTextArea(2, 40);
-    ParentViewText.setText(PVtxt);
+    JTextArea ParentViewText = new JTextArea(0, 30);
+    ParentViewText.setText("Parent View");;
     ParentViewText.setWrapStyleWord(true);
     ParentViewText.setLineWrap(true);
     ParentViewText.setOpaque(false);
@@ -109,7 +109,7 @@ public class BoardFrame extends JFrame implements ActionListener{
     Parents.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     Child.setTitle("Money Management");
-    JLabel title3 = new JLabel("Child View");
+    JLabel title3 = new JLabel("");
     Child.add(title3, BorderLayout.CENTER);
     String CVtxt = "Child View";
     JTextArea ChildViewText = new JTextArea(2, 40);

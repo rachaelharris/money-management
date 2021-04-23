@@ -23,7 +23,6 @@ public class BoardFrame extends JFrame implements ActionListener{
   JFrame Global = new JFrame(); //global leadership
   JFrame ParentSettings = new JFrame(); //parent settings page
   JFrame Transaction = new JFrame(); //view transactions from parents point of view
-  JFrame DepositMoney = new JFrame(); //deposit money into child's account
   JFrame AboutUs = new JFrame(); //frame for the about us section
   JButton ChangeView = new JButton("Change POV"); //button to switch from parent to child pov
   JButton ChangePov = new JButton("Change View"); //button to switch from child to parent pov
@@ -159,18 +158,6 @@ public class BoardFrame extends JFrame implements ActionListener{
     Transaction.setResizable(false);
     Transaction.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    DepositMoney.setTitle("Money Management");
-    JLabel DepositLabel = new JLabel("Deposit Money");
-    DepositMoney.add(DepositLabel);
-    JLabel DepositText = new JLabel("Date: 4/21 \tDeposit \nAmount: \t$100");
-    DepositMoney.add(DepositText);
-    //@ front end team <3 add more / make this look nice
-    //also, try to add more recent deposit statements if you can (these can be hard coded)
-    DepositMoney.setSize(500, 500);
-    DepositMoney.setLayout(new GridLayout(4,2));
-    DepositMoney.setResizable(false);
-    DepositMoney.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     Status.setTitle("Money Management");
     JLabel StatusLabel = new JLabel("Status");
     Status.add(StatusLabel);
@@ -249,15 +236,12 @@ public class BoardFrame extends JFrame implements ActionListener{
       }
 
       else if (choice.equals("Deposit")) {
-        DepositMoney.setVisible(true);
         Parents.setVisible(false);
-        String value = JOptionPane.showInputDialog("Deposit Amount:");
-        int amount = Integer.parseInt(value);
-        savingsAccount += amount;
-        String output = "Current Savings Amount is: $" + Integer.valueOf(savingsAccount);
-        JOptionPane.showMessageDialog(null, output);
-        DepositMoney.setVisible(false);
+        String in = JOptionPane.showInputDialog("Deposit Amount:");
         Parents.setVisible(true);
+        if (in != null) {
+          savingsAccount += Integer.parseInt(in);
+        }
       }
 
       else if (choice.equals("Message")) {

@@ -1,18 +1,22 @@
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
-import java.awt.Graphics;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JApplet;
 import javax.swing.JButton;
+import java.util.Random;
+
+/**
+Unused Imports
+import java.awt.event.*;
+import java.awt.Graphics;
+import javax.swing.JPanel;
+import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
-import java.util.Random;
+import javax.swing.JApplet;
+*/
 
 public class BoardFrame extends JFrame implements ActionListener{
   JFrame welcome = new JFrame(); //first frame, introduces program
@@ -125,8 +129,6 @@ public class BoardFrame extends JFrame implements ActionListener{
     StatusChecker.addActionListener(this);
     Child.add(MessageChecker);
     MessageChecker.addActionListener(this);
-    Child.add(ChangePov);
-    ChangePov.addActionListener(this);
     Child.setSize(500, 500);
     Child.setLayout(new GridLayout(4,2));
     Child.setResizable(false);
@@ -165,8 +167,6 @@ public class BoardFrame extends JFrame implements ActionListener{
     Status.add(StatusText);
     //@ front end team <3 add more / make this look nice
     //also, try to add recent transactions if you can (these can be hard coded)
-    Status.add(PreviousView);
-    PreviousView.addActionListener(this);
     Status.setSize(500, 500);
     Status.setLayout(new GridLayout(4,2));
     Status.setResizable(false);

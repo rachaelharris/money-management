@@ -22,6 +22,7 @@ public class BoardFrame extends JFrame implements ActionListener{
   JFrame Global = new JFrame(); //global leadership
   JFrame ParentSettings = new JFrame(); //parent settings page
   JFrame Transaction = new JFrame(); //view transactions from parents point of view
+  JFrame DepositMoney = new JFrame(); //depisot money into child's account
   JButton Home = new JButton("Home"); //home view button for child
   JButton StatusChecker = new JButton("Check Status"); //check score and transactions for child
   JButton GlobalStatus = new JButton("Global"); //check global ranking for child
@@ -136,7 +137,7 @@ public class BoardFrame extends JFrame implements ActionListener{
     Transaction.setTitle("Money Management");
     JLabel TransactionLabel = new JLabel("Transaction");
     Transaction.add(TransactionLabel);
-    JLabel TransactionText = new JLabel("Date: 4/21 \t Withdrawl \nAmount: \t$500");
+    JLabel TransactionText = new JLabel("Date: 4/21 \tWithdrawl \nAmount: \t$500");
     Transaction.add(TransactionText);
     //@ front end team <3 add more / make this look nice
     //also, try to add more transactions if you can (these can be hard coded)
@@ -144,6 +145,18 @@ public class BoardFrame extends JFrame implements ActionListener{
     Transaction.setLayout(new GridLayout(4,2));
     Transaction.setResizable(false);
     Transaction.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    DepositMoney.setTitle("Money Management");
+    JLabel DepositLabel = new JLabel("Deposit Money");
+    DepositMoney.add(DepositLabel);
+    JLabel DepositText = new JLabel("Date: 4/21 \tDeposit \nAmount: \t$100");
+    DepositMoney.add(DepositText);
+    //@ front end team <3 add more / make this look nice
+    //also, try to add more recent deposit statements if you can (these can be hard coded)
+    DepositMoney.setSize(500, 500);
+    DepositMoney.setLayout(new GridLayout(4,2));
+    DepositMoney.setResizable(false);
+    DepositMoney.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     Status.setTitle("Money Management");
     JLabel StatusLabel = new JLabel("Status");
@@ -206,6 +219,26 @@ public class BoardFrame extends JFrame implements ActionListener{
       else if (choice.equals("Child Player")) {
         Child.setVisible(true);
         level.setVisible(false);
+      }
+
+      else if (choice.equals("Deposit")) {
+        DepositMoney.setVisible(true);
+        Parents.setVisible(false);
+        JOptionPane.showInputDialog("Deposit Amount:");
+        DepositMoney.setVisible(false);
+        Parents.setVisible(true);
+      }
+
+      else if (choice.equals("Message")) {
+        Parents.setVisible(false);
+        JOptionPane.showInputDialog("Message:");
+        Parents.setVisible(true);
+      }
+
+      else if (choice.equals("Add a new parent")) {
+        Parents.setVisible(false);
+        JOptionPane.showInputDialog("Parent Email:");
+        Parents.setVisible(true);
       }
 
 

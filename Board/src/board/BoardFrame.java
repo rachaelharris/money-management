@@ -12,6 +12,7 @@ import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+import java.util.Random;
 
 public class BoardFrame extends JFrame implements ActionListener{
   JFrame welcome = new JFrame(); //first frame, introduces program
@@ -24,6 +25,8 @@ public class BoardFrame extends JFrame implements ActionListener{
   JFrame Transaction = new JFrame(); //view transactions from parents point of view
   JFrame DepositMoney = new JFrame(); //deposit money into child's account
   JFrame AboutUs = new JFrame(); //frame for the about us section
+  JButton ChangeView = new JButton("Change POV"); //button to switch from parent to child pov
+  JButton ChangePov = new JButton("Change View"); //button to switch from child to parent pov
   JButton StatusChecker = new JButton("Check Status"); //check score and transactions for child
   JButton GlobalStatus = new JButton("Global"); //check global ranking for child
   JButton Transactions = new JButton("Check Transactions"); //check transaction log from parents point of view
@@ -97,6 +100,8 @@ public class BoardFrame extends JFrame implements ActionListener{
     Transactions.addActionListener(this);
     //Adding settings button from other class
     Parents.add(ParentalSettings);
+    Parents.add(ChangeView);
+    ChangeView.addActionListener(this);
     ParentalSettings.addActionListener(this);
     Parents.setSize(500, 500);
     Parents.setLayout(new GridLayout(4,2));
@@ -313,6 +318,16 @@ public class BoardFrame extends JFrame implements ActionListener{
         Parents.setVisible(true);
       }
 
+      else if(choice.equals("Change POV")) {
+        Parents.setVisible(false);
+        level.setVisible(true);
+      }
+
+      else if(choice.equals("Change View")) {
+        Child.setVisible(false);
+        level.setVisible(true);
+      }
+
       else if(choice.equals("Back")) {
         Parents.setVisible(true);
         ParentSettings.setVisible(false);
@@ -321,6 +336,44 @@ public class BoardFrame extends JFrame implements ActionListener{
       else if(choice.equals("Check Status")) {
         Child.setVisible(false);
         Status.setVisible(true);
+      }
+
+      else if(choice.equals("Roll")) {
+        Child.setVisible(false);
+        Random r = new Random();
+        int rand = r.nextInt(7);
+        String event = "";
+        if (rand == 0) {
+            event += "SPEND: One of your friends is having a birthday party, you must get them a gift. Withdraw $20 from your account.";
+            savingsAccount -= 20;
+        }
+        if (rand == 1){
+          event += "SAVE: Your parents just gave you $20 for doing household chores! Add $20 to your account!";
+          savingsAccount += 20;
+        }
+        else if (rand == 2) {
+          event += "SAVE: You have recently been offered a position at the local ice cream shop! You will be making $8.00 per hour! Add $76.00 to your account weekly!";
+          savingsAccount += 76;
+        }
+        else if (rand == 3){
+          event += "SPEND: Your friends want to go to the movies this weekend. Withdraw $15 from your account.";
+          savingsAccount -= 15;
+        }
+        else if (rand == 4){
+          event += "SAVE: You did some yardwork for an elderly neighbor! Add $30 to your account!";
+          savingsAccount += 30;
+        }
+        else if (rand == 5){
+          event += "SPEND: You broke your mom's favorite vase. In order to take accountability for your actions, you will replace the vase. Withdraw $50 from your account.";
+          savingsAccount -= 50;
+        }
+        else if (rand == 6){
+          event+= "SAVE: You recently had a lemonade stand with some friends on a hot summer day. Add $10 to your account.";
+          savingsAccount += 10;
+        }
+        String output = "Your event today is: " + event;
+        JOptionPane.showMessageDialog(null, output);
+        Child.setVisible(true);
       }
 
       else if(choice.equals("Home Page")) {
@@ -337,7 +390,7 @@ public class BoardFrame extends JFrame implements ActionListener{
         Child.setVisible(true);
         Global.setVisible(false);
       }
-      }
+    }
 
 
   public static void main (String[] args) {

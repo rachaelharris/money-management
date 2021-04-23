@@ -109,7 +109,7 @@ public class BoardFrame extends JFrame implements ActionListener{
     Parents.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     Child.setTitle("Money Management");
-    JLabel title3 = new JLabel("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+    JLabel title3 = new JLabel("Child View");
     Child.add(title3, BorderLayout.CENTER);
     String CVtxt = "Child View";
     JTextArea ChildViewText = new JTextArea(2, 40);
@@ -143,7 +143,7 @@ public class BoardFrame extends JFrame implements ActionListener{
     Global.setTitle("Money Management");
     JLabel GlobalLabel = new JLabel("Global");
     Global.add(GlobalLabel);
-    JLabel GlobalText = new JLabel("Top player: \tName: Rachael Harris \tSavings: $1,500\nSecond Place: \t Name: John Smith \tSavings: $1,300\nThird Place: \tName: Jane Doe");
+    JLabel GlobalText = new JLabel("<html><center>"+"\tName: Rachael Harris \tSavings: $1,500" +"<br>"+ "Second Place: \t Name: John Smith \tSavings: $1,300" +"<br>"+ "Third Place: \tName: Jane Doe \tSavings: $1,000" + "</center></html>");
     Global.add(GlobalText);
     Global.add(BackAgain);
     BackAgain.addActionListener(this);
@@ -155,7 +155,7 @@ public class BoardFrame extends JFrame implements ActionListener{
     Transaction.setTitle("Money Management");
     JLabel TransactionLabel = new JLabel("Transaction");
     Transaction.add(TransactionLabel);
-    JLabel TransactionText = new JLabel("Date: 4/20 \tWithdrawl \nAmount: \t$50 \n\nDate: 4/21 \tDeposit \nAmount: \t$100 \n\nDate: 4/22 \tDeposit \nAmount: \t$20 \n\nDate: 4/23 \tWithdrawl \nAmount: \t$10");
+    JLabel TransactionText = new JLabel("<html><center>"+"Date: 4/20 \tWithdrawl \nAmount: \t$50"  +"<br>"+ "\tDeposit \nAmount: \t$100 \n\nDate: 4/22 \tDeposit \nAmount: \t$20" + "<br>"+ "Date: 4/23 \tWithdrawl \nAmount: \t$10" + "</center></html>");
     Transaction.add(TransactionText);
     Transaction.add(HomeView);
     HomeView.addActionListener(this);

@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-public class finalProject extends JFrame implements ActionListener{
+public class BoardFrame extends JFrame implements ActionListener{
   JFrame welcome = new JFrame(); //first frame, introduces program
   JFrame level = new JFrame(); //second frame, asks the user to indicate their level -- parent or child player
   JFrame Parents = new JFrame(); //parent home page

@@ -15,40 +15,11 @@ import javax.swing.JTextField;
 
 public class finalProject extends JFrame implements ActionListener{
   JFrame welcome = new JFrame(); //first frame, introduces program
-  JFrame level = new JFrame(); //second frame, asks the user to indicate their knoowledge on HR
-  JFrame OneQuestion1 = new JFrame(); //first question for the easiest level
-  JFrame OneQuestion2 = new JFrame(); //second question for the easiest level
-  JFrame OneQuestion3 = new JFrame(); //third question for the easiest level
-  JFrame OneQuestion4 = new JFrame(); //fourth question for the easiest level
-  JFrame OneQuestion5 = new JFrame(); //fifth question for the easiest level
-  JFrame OneQuestion6 = new JFrame(); //sixth question for the easiest level
-  JFrame OneQuestion7 = new JFrame(); //seventh question for the easiest level
-  JFrame OneQuestion8 = new JFrame(); //eighth question for the easiest level
-  JFrame OneQuestion9 = new JFrame(); //ninth question for the easiest level
-  JFrame OneQuestion10 = new JFrame(); //tenth question forthe easiest level
-  JFrame OneResult = new JFrame(); //result for the easiest level
-  JFrame TwoQuestion1 = new JFrame(); //first question for the middle level
-  JFrame TwoQuestion2 = new JFrame(); //second question for the middle level
-  JFrame TwoQuestion3 = new JFrame(); //third question for the middle level
-  JFrame TwoQuestion4 = new JFrame(); //fourth question for the middle level
-  JFrame TwoQuestion5 = new JFrame(); //fifth question for the middle level
-  JFrame TwoQuestion6 = new JFrame(); //sixth question for the middle level
-  JFrame TwoQuestion7 = new JFrame(); //seventh question for the middle level
-  JFrame TwoQuestion8 = new JFrame(); //eighth question for the mididle level
-  JFrame TwoQuestion9 = new JFrame(); //ninth question for the middle level
-  JFrame TwoQuestion10 = new JFrame(); //tenth question for the middle level
-  JFrame TwoResult = new JFrame(); //result for the middle level
-  JFrame ThreeQuestion1 = new JFrame(); //first question for the hardest level
-  JFrame ThreeQuestion2 = new JFrame(); //second question for the hardest level
-  JFrame ThreeQuestion3 = new JFrame(); //third question for the hardest level
-  JFrame ThreeQuestion4 = new JFrame(); //fourth question for the hardest level
-  JFrame ThreeQuestion5 = new JFrame(); //fifth question for the hardest level
-  JFrame ThreeQuestion6 = new JFrame(); //sixth question for the hardest level
-  JFrame ThreeQuestion7 = new JFrame(); //seventh question for the hardest level
-  JFrame ThreeQuestion8 = new JFrame(); //eighth question for the hardest level
-  JFrame ThreeQuestion9 = new JFrame(); //ninth question for the hardest level
-  JFrame ThreeQuestion10 = new JFrame(); //tenth question for the hardest level
-  JFrame ThreeResult = new JFrame();
+  JFrame level = new JFrame(); //second frame, asks the user to indicate their level -- parent or child player
+  JFrame Parents = new JFrame(); //parent home page
+  JFrame Friends = new JFrame(); //child player home page
+  JFrame Global = new JFrame(); //global leadership
+  JFrame Settings = new JFrame(); //settings page
 
   BoardFrame() {
     welcome.setTitle("Money Management");

@@ -48,16 +48,12 @@ public class BoardFrame extends JFrame implements ActionListener{
     level.setTitle("Money Management");
     JLabel label = new JLabel("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Are you a parent or a child player?");
     level.add(label);
-    JButton button1 = new JButton("Parent");
-    level.add(button1);
-    button1.addActionListener(this);
-    JButton button2 = new JButton("Child Player");
-    level.add(button2);
-    button2.addActionListener(this);
-    //delete button 3
-    //JButton button3 = new JButton("Above Average or Extensive");
-    //level.add(button3);
-    //button3.addActionListener(this);
+    JButton Parent_Option = new JButton("Parent");
+    level.add(Parent_Option);
+    Parent_Option.addActionListener(this);
+    JButton Child_Option = new JButton("Child Player");
+    level.add(Child_Option);
+    Child_Option.addActionListener(this);
     level.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     level.setSize(500, 500);
     level.setLayout(new GridLayout(4,2));
@@ -80,7 +76,7 @@ public class BoardFrame extends JFrame implements ActionListener{
     Parents.setResizable(false);
     Parents.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    Child.setTitle("Human Rights Interactive");
+    Child.setTitle("Money Management");
     JLabel textQuestion2 = new JLabel("What is the UDHR?");
     Child.add(textQuestion2);
     JButton button7 = new JButton();
@@ -94,7 +90,7 @@ public class BoardFrame extends JFrame implements ActionListener{
     Child.add(button9);
     button9.addActionListener(this);
     Child.setSize(500, 500);
-    Friends.setLayout(new GridLayout(4,2));
+    Child.setLayout(new GridLayout(4,2));
     Child.setResizable(false);
     Child.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -138,20 +134,17 @@ public class BoardFrame extends JFrame implements ActionListener{
         welcome.setVisible(false);
       }
 
-      else if (choice.equals("Very Little or None at All")) {
-         OneQuestion1.setVisible(true);
+      else if (choice.equals("Parent")) {
+         Parents.setVisible(true);
          level.setVisible(false);
       }
 
-      else if (choice.equals("United Nations Declaring Respect for Humans") || choice.equals("Universal Declaration for Resounding Humans")) {
-        JOptionPane.showMessageDialog(null, "The answer you have chosen is incorrect.", "Question 1", JOptionPane.ERROR_MESSAGE);
-      }
 
-      else if (choice.equals("Universal Declaration of Human Rights")) {
-        OneQuestion2.setVisible(true);
-        OneQuestion1.setVisible(false);
+      else if (choice.equals("Child Player")) {
+        Child.setVisible(true);
+        level.setVisible(false);
       }
-
+      /*
       else if (choice.equals("a proposed document as to how humans should be treated.") || choice.equals("a document that garuantees rights.")) {
         JOptionPane.showMessageDialog(null, "The answer you have chosen is incorrect.", "Question 2", JOptionPane.ERROR_MESSAGE);
       }
@@ -423,6 +416,7 @@ public class BoardFrame extends JFrame implements ActionListener{
             ThreeResult.setVisible(true);
             ThreeQuestion10.setVisible(false);
         }
+        */
       }
 
   public static void main (String[] args) {

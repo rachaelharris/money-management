@@ -69,9 +69,17 @@ public class BoardFrame extends JFrame implements ActionListener{
     level.setResizable(false);
 
     Parents.setTitle("Money Management");
-    JLabel ParentView = new JLabel("Parent View");
-    ParentView.setText("Parent View");
-    Parents.add(ParentView);
+    JLabel title = new JLabel("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+    Parents.add(title, BorderLayout.CENTER);
+    String PVtxt = "Parent View";
+    JTextArea ParentViewText = new JTextArea(2, 40);
+    ParentViewText.setText(PVtxt);
+    ParentViewText.setWrapStyleWord(true);
+    ParentViewText.setLineWrap(true);
+    ParentViewText.setOpaque(false);
+    ParentViewText.setEditable(false);
+    ParentViewText.setFocusable(false);
+    Parents.add(ParentViewText, BorderLayout.CENTER);
     //Parents can deposit money into the child's account, should they so choose. This can be in the form of an "allowance" or as a gift. This is giving a little bit of financial dependency (but the child is literally a dependent), but it also allows the parents to use positive reinforcement as a training mechanism.
     JButton Deposit = new JButton("Deposit");
     Deposit.setText("Deposit");
@@ -101,8 +109,17 @@ public class BoardFrame extends JFrame implements ActionListener{
     Parents.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     Child.setTitle("Money Management");
-    JLabel ChildVeiw = new JLabel("Child View");
-    Child.add(ChildVeiw);
+    JLabel title3 = new JLabel("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+    Child.add(title3, BorderLayout.CENTER);
+    String CVtxt = "Child View";
+    JTextArea ChildViewText = new JTextArea(2, 40);
+    ChildViewText.setText(CVtxt);
+    ChildViewText.setWrapStyleWord(true);
+    ChildViewText.setLineWrap(true);
+    ChildViewText.setOpaque(false);
+    ChildViewText.setEditable(false);
+    ChildViewText.setFocusable(false);
+    Child.add(ChildViewText, BorderLayout.CENTER);
     JButton Roll = new JButton();
     //To play the game, children will roll a dice to give them different scenarios to encounter
     Roll.setText("Roll");
@@ -126,10 +143,8 @@ public class BoardFrame extends JFrame implements ActionListener{
     Global.setTitle("Money Management");
     JLabel GlobalLabel = new JLabel("Global");
     Global.add(GlobalLabel);
-    JLabel GlobalText = new JLabel("Top player: \tName: Rachael Harris \tSavings: $10,000");
+    JLabel GlobalText = new JLabel("Top player: \tName: Rachael Harris \tSavings: $1,500\nSecond Place: \t Name: John Smith \tSavings: $1,300\nThird Place: \tName: Jane Doe");
     Global.add(GlobalText);
-    //@ front end team <3 add more / make this look nice
-    // add more top players if you can (these can be hard coded)
     Global.add(BackAgain);
     BackAgain.addActionListener(this);
     Global.setSize(500, 500);
@@ -140,10 +155,8 @@ public class BoardFrame extends JFrame implements ActionListener{
     Transaction.setTitle("Money Management");
     JLabel TransactionLabel = new JLabel("Transaction");
     Transaction.add(TransactionLabel);
-    JLabel TransactionText = new JLabel("Date: 4/21 \tWithdrawl \nAmount: \t$500");
+    JLabel TransactionText = new JLabel("Date: 4/20 \tWithdrawl \nAmount: \t$50 \n\nDate: 4/21 \tDeposit \nAmount: \t$100 \n\nDate: 4/22 \tDeposit \nAmount: \t$20 \n\nDate: 4/23 \tWithdrawl \nAmount: \t$10");
     Transaction.add(TransactionText);
-    //@ front end team <3 add more / make this look nice
-    //also, try to add more transactions if you can (these can be hard coded)
     Transaction.add(HomeView);
     HomeView.addActionListener(this);
     Transaction.setSize(500, 500);
@@ -152,8 +165,17 @@ public class BoardFrame extends JFrame implements ActionListener{
     Transaction.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     ParentSettings.setTitle("Money Management");
-    JLabel SettingsLabel = new JLabel("Parent Settings");
-    ParentSettings.add(SettingsLabel);
+    JLabel title2 = new JLabel("\t\t\t\t\t\t\t\t\t\t\t\t\t");
+    ParentSettings.add(title2, BorderLayout.CENTER);
+    String PStxt = "Parental Settings";
+    JTextArea ParentSettingsText = new JTextArea(2, 40);
+    ParentSettingsText.setText(PStxt);
+    ParentSettingsText.setWrapStyleWord(true);
+    ParentSettingsText.setLineWrap(true);
+    ParentSettingsText.setOpaque(false);
+    ParentSettingsText.setEditable(false);
+    ParentSettingsText.setFocusable(false);
+    ParentSettings.add(ParentSettingsText, BorderLayout.CENTER);
     JButton NameChange = new JButton();
     NameChange.setText("Name Change");
     ParentSettings.add(NameChange);
@@ -184,14 +206,13 @@ public class BoardFrame extends JFrame implements ActionListener{
     AboutUs.setTitle("Money Management");
     JLabel AboutUsLabel = new JLabel("About");
     AboutUs.add(AboutUsLabel);
-    JLabel AboutUsText = new JLabel("[insert literally any information about the game, please add as much as you can]");
+    JLabel AboutUsText = new JLabel("<html><center>"+"Financial stability is a state in which you're confident in your means," +"<br>"+ "and typically don't worry about paying your living expenses." +"<br>"+ "It's a goal that many strive for, but it is usually" +"<br>"+ "the result of several years of dedicated work" +"<br>"+ "and strategical planning. However, this mindset can" +"<br>"+ "be learned from a young age. This tool will" +"<br>"+ "provide a game-like experience for young adolescents to encourage " +"<br>"+ "their financial responsibility while collaborating with their parents. " +"<br>"+ "The goal of this feature is to promote a healthy environment " + "<br>"+ " for children to learn while having support from their parents."+"</center></html>");
     //this model is after the first idea that we came up with
     AboutUs.add(AboutUsText);
     AboutUs.add(Previous);
     Previous.addActionListener(this);
-    //@ front end team <3 add more / make this look nice
     AboutUs.setSize(500, 500);
-    AboutUs.setLayout(new GridLayout(4,2));
+    AboutUs.setLayout(new GridLayout(3,3));
     AboutUs.setResizable(false);
     AboutUs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }

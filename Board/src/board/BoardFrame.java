@@ -18,6 +18,7 @@ public class BoardFrame extends JFrame implements ActionListener{
   JFrame level = new JFrame(); //second frame, asks the user to indicate their level -- parent or child player
   JFrame Parents = new JFrame(); //parent home page
   JFrame Child = new JFrame(); //child player home page
+  JFrame Status = new JFrame(); //status checker
   JFrame Global = new JFrame(); //global leadership
   JFrame Settings = new JFrame(); //settings page
 
@@ -44,6 +45,15 @@ public class BoardFrame extends JFrame implements ActionListener{
     welcome.setResizable(false);
     welcome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+    //default buttons for every frame
+    JButton Home = new JButton("Home");
+    Home.addActionListener(this);
+    JButton Status = new JButton("Status");
+    Status.addActionListener(this);
+    JButton Global = new JButton("Global");
+    Global.addActionListener(this);
+    JButton Settings = new JButton("Settings");
+    Settings.addActionListener(this);
 
     level.setTitle("Money Management");
     JLabel label = new JLabel("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t Are you a parent or a child player?");
@@ -60,67 +70,81 @@ public class BoardFrame extends JFrame implements ActionListener{
     level.setResizable(false);
 
     Parents.setTitle("Money Management");
-    JLabel textQuestion1 = new JLabel("What does UDHR stand for?");
-    Parents.add(textQuestion1);
-    JButton button4 = new JButton("United Nations Declaring Respect for Humans");
-    Parents.add(button4);
-    button4.addActionListener(this);
-    JButton button5 = new JButton("Universal Declaration of Human Rights");
-    Parents.add(button5);
-    button5.addActionListener(this);
-    JButton button6 = new JButton("Universal Declaration for Resounding Humans");
-    Parents.add(button6);
-    button6.addActionListener(this);
+    JLabel ParentView = new JLabel("Parent View");
+    Parents.add(ParentView);
+    JButton Deposit = new JButton("Deposit"); //Parents can choose to deposit money into the child's account. This can be done as an allowance or a gift.
+    Parents.add(Deposit);
+    Deposit.addActionListener(this);
+    JButton Message = new JButton("Message"); //Parents can message their children to show their support and to encourage collaboration. Parents can send tips to children via this feature as well!
+    Parents.add(Message);
+    Message.addActionListener(this);
+    //Parents can check the status of their children in the game by seeing the amount in their game account and seeing their recent transactions listed.
+    Parents.add(Status);
+    JButton AddParent = new JButton("Add a new Parent"); //Parents can add another parent or guardian to the game to view as well!
+    Parents.add(AddParent);
+    AddParent.addActionListener(this);
     Parents.setSize(500, 500);
     Parents.setLayout(new GridLayout(4,2));
     Parents.setResizable(false);
     Parents.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     Child.setTitle("Money Management");
-    JLabel textQuestion2 = new JLabel("What is the UDHR?");
-    Child.add(textQuestion2);
-    JButton button7 = new JButton();
-    button7.setText("<html><center>"+"a document adopted by the United Nations as a result "+"<br>"+"of the actions taken during WWII. It guarantees "+"<br>"+" the rights of every individual everywhere."+"</center></html>");
-    Child.add(button7);
-    button7.addActionListener(this);
-    JButton button8 = new JButton("a proposed document as to how humans should be treated.");
-    Child.add(button8);
-    button8.addActionListener(this);
-    JButton button9 = new JButton("a document that guarantees rights.");
-    Child.add(button9);
-    button9.addActionListener(this);
+    JLabel ChildVeiw = new JLabel("Child View");
+    Child.add(ChildView);
+    JButton Roll = new JButton();
+    Roll.setText("Roll");
+    Child.add(Roll);
+    Roll.addActionListener(this);
+    Child.add(Home);
+    Child.add(Status);
+    Child.add(Global);
+    Child.add(Settings);
     Child.setSize(500, 500);
     Child.setLayout(new GridLayout(4,2));
     Child.setResizable(false);
     Child.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    Global.setTitle("Human Rights Interactive");
-    JLabel textQuestion3 = new JLabel("True or False: the UDHR is legally binding.");
-    Global.add(textQuestion3);
-    JButton button10 = new JButton("True");
-    Global.add(button10);
-    button10.addActionListener(this);
-    JButton button11 = new JButton("False");
-    Global.add(button11);
-    button11.addActionListener(this);
+    Global.setTitle("Money Management");
+    JLabel GlobalLabel = new JLabel("Global");
+    Global.add(GlobalLabel);
+    JLabel GlobalText = new JLabel("Name/Savings/Score");
+    //add more / make this look nice
     Global.setSize(500, 500);
     Global.setLayout(new GridLayout(4,2));
     Global.setResizable(false);
     Global.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    Settings.setTitle("Human Rights Interactive");
-    JLabel textQuestion4 = new JLabel("Why is the UDHR not legally binding?");
-    Settings.add(textQuestion4);
-    JButton button12 = new JButton();
-    button12.setText("<html><center>"+"It forms part of customary international law "+"<br>"+"(laws that have developed through custom "+"<br>"+" rather than by formal agreement)."+"</center></html>");
-    Settings.add(button12);
-    button12.addActionListener(this);
-    JButton button13 = new JButton("It is not a treaty so it does not create legal obligations.");
-    Settings.add(button13);
-    button13.addActionListener(this);
-    JButton button14 = new JButton("Both choices are correct.");
-    Settings.add(button14);
-    button14.addActionListener(this);
+    Settings.setTitle("Money Management");
+    JLabel SettingsLabel = new JLabel("Settings");
+    Settings.add(SettingsLabel);
+    JButton NameChange = new JButton();
+    NameChange.setText("Name Change");
+    Settings.add(NameChange);
+    NameChange.addActionListener(this);
+    JButton PlanChange = new JButton();
+    PlanChange.setText("Plan Change");
+    Settings.add(PlanChange);
+    PlanChange.addActionListener(this);
+    JButton AddInfo = new JButton();
+    AddInfo.setText("Add Bank Information");
+    Settings.add(AddInfo);
+    AddInfo.addActionListener(this);
+    JButton InviteFriends = new JButton();
+    InviteFreinds.setText("Invite Friends");
+    Settings.add(InviteFriends);
+    InviteFriends.addActionListener(this);
+    JButton FAQ = new JButton();
+    FAQ.setText("FAQ");
+    Settings.add(FAQ);
+    FAQ.addActionListener(this);
+    JButton About = new JButton();
+    About.setText("About");
+    Settings.add(About);
+    Add.addActionListener(this);
+    JButton Contact = new JButton();
+    Contact.setText("Contact Us");
+    Settings.add(Contact);
+    Contact.addActionListener(this);
     Settings.setSize(500, 500);
     Settings.setLayout(new GridLayout(4,2));
     Settings.setResizable(false);
@@ -144,16 +168,14 @@ public class BoardFrame extends JFrame implements ActionListener{
         Child.setVisible(true);
         level.setVisible(false);
       }
-      /*
-      else if (choice.equals("a proposed document as to how humans should be treated.") || choice.equals("a document that garuantees rights.")) {
-        JOptionPane.showMessageDialog(null, "The answer you have chosen is incorrect.", "Question 2", JOptionPane.ERROR_MESSAGE);
-      }
 
-      else if (choice.equals("<html><center>"+"a document adopted by the United Nations as a result "+"<br>"+"of the actions taken during WWII. It guarantees "+"<br>"+" the rights of every individual everywhere."+"</center></html>")) {
+
+      else if (choice.equals("Settings")) {
         OneQuestion3.setVisible(true);
         OneQuestion2.setVisible(false);
       }
 
+      /*
       else if (choice.equals("True")) {
         JOptionPane.showMessageDialog(null, "The answer you have chosen is incorrect.", "Question 3", JOptionPane.ERROR_MESSAGE);
       }

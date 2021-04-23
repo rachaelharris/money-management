@@ -22,12 +22,14 @@ public class BoardFrame extends JFrame implements ActionListener{
   JFrame Global = new JFrame(); //global leadership
   JFrame ParentSettings = new JFrame(); //parent settings page
   JFrame Transaction = new JFrame(); //view transactions from parents point of view
-  JFrame DepositMoney = new JFrame(); //depisot money into child's account
-  JButton Home = new JButton("Home"); //home view button for child
+  JFrame DepositMoney = new JFrame(); //deposit money into child's account
+  JFrame AboutUs = new JFrame(); //frame for the about us section
   JButton StatusChecker = new JButton("Check Status"); //check score and transactions for child
   JButton GlobalStatus = new JButton("Global"); //check global ranking for child
-  JButton HomeView = new JButton("Home View"); //home view button for parent
   JButton Transactions = new JButton("Check Transactions"); //check transaction log from parents point of view
+  JButton HomeView = new JButton("Home"); //extra home button for certain frames on parent pov
+  JButton Back = new JButton("Back"); //extra back button for parental settings page
+  JButton Previous = new JButton("Previous"); //extra back button for About Page
   JButton ParentalSettings = new JButton("Parent Settings"); //change settings from parental pov
 
   BoardFrame() {
@@ -86,9 +88,6 @@ public class BoardFrame extends JFrame implements ActionListener{
     AddParent.setText("Add a new Parent");
     Parents.add(AddParent);
     AddParent.addActionListener(this);
-    //Adding homeview button from other class
-    Parents.add(HomeView);
-    HomeView.addActionListener(this);
     //Adding transactions button from other class
     Parents.add(Transactions);
     Transactions.addActionListener(this);
@@ -108,9 +107,6 @@ public class BoardFrame extends JFrame implements ActionListener{
     Roll.setText("Roll");
     Child.add(Roll);
     Roll.addActionListener(this);
-    //Adding home button from other class
-    Child.add(Home);
-    Home.addActionListener(this);
     //Adding global status checker button from other class
     Child.add(GlobalStatus);
     GlobalStatus.addActionListener(this);
@@ -141,6 +137,8 @@ public class BoardFrame extends JFrame implements ActionListener{
     Transaction.add(TransactionText);
     //@ front end team <3 add more / make this look nice
     //also, try to add more transactions if you can (these can be hard coded)
+    Transaction.add(HomeView);
+    HomeView.addActionListener(this);
     Transaction.setSize(500, 500);
     Transaction.setLayout(new GridLayout(4,2));
     Transaction.setResizable(false);
@@ -185,10 +183,6 @@ public class BoardFrame extends JFrame implements ActionListener{
     AddInfo.setText("Add Bank Information");
     ParentSettings.add(AddInfo);
     AddInfo.addActionListener(this);
-    JButton FAQ = new JButton();
-    FAQ.setText("FAQ");
-    ParentSettings.add(FAQ);
-    FAQ.addActionListener(this);
     JButton About = new JButton();
     About.setText("About");
     ParentSettings.add(About);
@@ -197,10 +191,26 @@ public class BoardFrame extends JFrame implements ActionListener{
     Contact.setText("Contact Us");
     ParentSettings.add(Contact);
     Contact.addActionListener(this);
+    ParentSettings.add(Back);
+    Back.addActionListener(this);
     ParentSettings.setSize(500, 500);
     ParentSettings.setLayout(new GridLayout(4,2));
     ParentSettings.setResizable(false);
     ParentSettings.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    AboutUs.setTitle("Money Management");
+    JLabel AboutUsLabel = new JLabel("About");
+    AboutUs.add(AboutUsLabel);
+    JLabel AboutUsText = new JLabel("[insert literally any information about the game, please add as much as you can]");
+    //this model is after the first idea that we came up with
+    AboutUs.add(AboutUsText);
+    AboutUs.add(Previous);
+    Previous.addActionListener(this);
+    //@ front end team <3 add more / make this look nice
+    AboutUs.setSize(500, 500);
+    AboutUs.setLayout(new GridLayout(4,2));
+    AboutUs.setResizable(false);
+    AboutUs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
 
   public void actionPerformed(ActionEvent ae) {
@@ -235,10 +245,69 @@ public class BoardFrame extends JFrame implements ActionListener{
         Parents.setVisible(true);
       }
 
-      else if (choice.equals("Add a new parent")) {
+      else if (choice.equals("Add a new Parent")) {
         Parents.setVisible(false);
         JOptionPane.showInputDialog("Parent Email:");
         Parents.setVisible(true);
+      }
+
+      else if (choice.equals("Check Transactions")) {
+        Parents.setVisible(false);
+        Transaction.setVisible(true);
+      }
+
+      else if(choice.equals("Home")) {
+        Transaction.setVisible(false);
+        Parents.setVisible(true);
+      }
+
+      else if(choice.equals("Parent Settings")) {
+        Parents.setVisible(false);
+        ParentSettings.setVisible(true);
+      }
+
+      else if (choice.equals("Name Change")) {
+        Parents.setVisible(false);
+        JOptionPane.showInputDialog("Enter New Name:");
+        Parents.setVisible(true);
+      }
+
+      else if (choice.equals("Plan Change")) {
+        Parents.setVisible(false);
+        String[] options = {"Intensive Involvement", "Intermediate Involvement", "Low-level Involvements"};
+        JOptionPane.showInputDialog(null, "Change Plan to:", "Changing Plans", JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        Parents.setVisible(true);
+      }
+
+      else if (choice.equals("Add Bank Information")) {
+        Parents.setVisible(false);
+        JOptionPane.showInputDialog("Enter Bank Name:");
+        JOptionPane.showInputDialog("Enter Account Holder's Name:");
+        JOptionPane.showInputDialog("Enter Account Number:");
+        JOptionPane.showInputDialog("Enter Routing Number:");
+        Parents.setVisible(true);
+      }
+
+      else if (choice.equals("About")) {
+        Parents.setVisible(false);
+        AboutUs.setVisible(true);
+      }
+
+      else if (choice.equals("Previous")) {
+        Parents.setVisible(true);
+        AboutUs.setVisible(false);
+      }
+
+      else if (choice.equals("Contact Us")) {
+        Parents.setVisible(false);
+        JOptionPane.showInputDialog("Enter Emaill Address:");
+        JOptionPane.showInputDialog("Enter Message:");
+        Parents.setVisible(true);
+      }
+
+      else if(choice.equals("Back")) {
+        Parents.setVisible(true);
+        ParentSettings.setVisible(false);
       }
 
 

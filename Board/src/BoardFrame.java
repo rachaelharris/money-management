@@ -118,6 +118,8 @@ public class BoardFrame extends JFrame implements ActionListener{
     StatusChecker.addActionListener(this);
     Child.add(MessageChecker);
     MessageChecker.addActionListener(this);
+    Child.add(ChangePov);
+    ChangePov.addActionListener(this);
     Child.setSize(500, 500);
     Child.setLayout(new GridLayout(4,2));
     Child.setResizable(false);
@@ -130,6 +132,8 @@ public class BoardFrame extends JFrame implements ActionListener{
     Global.add(GlobalText);
     //@ front end team <3 add more / make this look nice
     // add more top players if you can (these can be hard coded)
+    Global.add(BackAgain);
+    BackAgain.addActionListener(this);
     Global.setSize(500, 500);
     Global.setLayout(new GridLayout(4,2));
     Global.setResizable(false);
@@ -156,6 +160,8 @@ public class BoardFrame extends JFrame implements ActionListener{
     Status.add(StatusText);
     //@ front end team <3 add more / make this look nice
     //also, try to add recent transactions if you can (these can be hard coded)
+    Status.add(PreviousView);
+    PreviousView.addActionListener(this);
     Status.setSize(500, 500);
     Status.setLayout(new GridLayout(4,2));
     Status.setResizable(false);
@@ -378,7 +384,7 @@ public class BoardFrame extends JFrame implements ActionListener{
 
       else if(choice.equals("Global")) {
         Child.setVisible(false);
-        Global.setVisible(false);
+        Global.setVisible(true);
       }
 
       else if(choice.equals("Previous Page")) {

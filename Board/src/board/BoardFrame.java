@@ -15,31 +15,56 @@ import javax.swing.JTextField;
 import java.util.Random;
 
 public class BoardFrame extends JFrame implements ActionListener{
-  JFrame welcome = new JFrame(); //first frame, introduces program
-  JFrame level = new JFrame(); //second frame, asks the user to indicate their level -- parent or child player
-  JFrame Parents = new JFrame(); //parent home page
-  JFrame Child = new JFrame(); //child player home page
-  JFrame Status = new JFrame(); //child status checker
-  JFrame Global = new JFrame(); //global leadership
-  JFrame ParentSettings = new JFrame(); //parent settings page
-  JFrame Transaction = new JFrame(); //view transactions from parents point of view
-  JFrame DepositMoney = new JFrame(); //deposit money into child's account
-  JFrame AboutUs = new JFrame(); //frame for the about us section
-  JButton ChangeView = new JButton("Change POV"); //button to switch from parent to child pov
-  JButton ChangePov = new JButton("Change View"); //button to switch from child to parent pov
-  JButton StatusChecker = new JButton("Check Status"); //check score and transactions for child
-  JButton MessageChecker = new JButton("Check Messages"); //check status of messages from parent to child from child's pov.
-  JButton GlobalStatus = new JButton("Global"); //check global ranking for child
-  JButton Transactions = new JButton("Check Transactions"); //check transaction log from parents point of view
-  JButton HomeView = new JButton("Home"); //extra home button for certain frames on parent pov
-  JButton Back = new JButton("Back"); //extra back button for parental settings page
-  JButton Previous = new JButton("Previous"); //extra back button for About Page
-  JButton PreviousView = new JButton("Home Page"); //extra back button for check status page
-  JButton BackAgain = new JButton("Previous Page"); //extra back button for Global page
-  JButton ParentalSettings = new JButton("Parent Settings"); //change settings from parental pov
-  public int savingsAccount = 0;
-  public double scoreStatus = (savingsAccount / 100) * 0.1234;
-  public String message = "";
+  public static JFrame welcome = new JFrame(); //first frame, introduces program
+  public static JFrame level = new JFrame(); //second frame, asks the user to indicate their level -- parent or child player
+  public static JFrame Parents = new JFrame(); //parent home page
+  public static JFrame Child = new JFrame(); //child player home page
+  public static JFrame Status = new JFrame(); //child status checker
+  public static JFrame Global = new JFrame(); //global leadership
+  public static JFrame ParentSettings = new JFrame(); //parent settings page
+  public static JFrame Transaction = new JFrame(); //view transactions from parents point of view
+  public static JFrame DepositMoney = new JFrame(); //deposit money into child's account
+  public static JFrame AboutUs = new JFrame(); //frame for the about us section
+  public static JButton ChangeView = new JButton("Change POV"); //button to switch from parent to child pov
+  public static JButton ChangePov = new JButton("Change View"); //button to switch from child to parent pov
+  public static JButton StatusChecker = new JButton("Check Status"); //check score and transactions for child
+  public static JButton MessageChecker = new JButton("Check Messages"); //check status of messages from parent to child from child's pov.
+  public static JButton GlobalStatus = new JButton("Global"); //check global ranking for child
+  public static JButton Transactions = new JButton("Check Transactions"); //check transaction log from parents point of view
+  public static JButton HomeView = new JButton("Home"); //extra home button for certain frames on parent pov
+  public static JButton Back = new JButton("Back"); //extra back button for parental settings page
+  public static JButton Previous = new JButton("Previous"); //extra back button for About Page
+  public static JButton PreviousView = new JButton("Home Page"); //extra back button for check status page
+  public static JButton BackAgain = new JButton("Previous Page"); //extra back button for Global page
+  public static JButton ParentalSettings = new JButton("Parent Settings"); //change settings from parental pov
+ int savingsAccount;
+ double scoreStatus;
+   String messageSent;
+
+ public void setSavingsAccount(int savingsAccount) {
+    this.savingsAccount = savingsAccount;
+  }
+
+  public  int getSavingsAccount() {
+    return this.savingsAccount;
+  }
+
+  public static void setScoreStatus(int scoreStatus) {
+    this.scoreStatus = scoreStatus;
+  }
+
+  public static double getScoreStatus() {
+    return this.scoreStatus;
+  }
+
+  public static void setMessageSent(String messageSent) {
+    this.messageSent = messageSent;
+  }
+
+  public static String getMessageSent() {
+    return this.messageSent;
+  }
+
 
   BoardFrame() {
     welcome.setTitle("Money Management");
@@ -172,10 +197,12 @@ public class BoardFrame extends JFrame implements ActionListener{
     Status.setTitle("Money Management");
     JLabel StatusLabel = new JLabel("Status");
     Status.add(StatusLabel);
-    JLabel StatusText = new JLabel("Name: [insert child name] \tAmount in savings account: $" + savingsAccount + "\tscore: " + scoreStatus);
+    JLabel StatusText = new JLabel("Name: [insert child name] \tAmount in savings account: $" + BoardFrame.getSavingsAccount() + "\tscore: " + scoreStatus);
     Status.add(StatusText);
     //@ front end team <3 add more / make this look nice
     //also, try to add recent transactions if you can (these can be hard coded)
+    Status.add(HomeView);
+    HomeView.addActionListener(this);
     Status.setSize(500, 500);
     Status.setLayout(new GridLayout(4,2));
     Status.setResizable(false);
@@ -226,7 +253,12 @@ public class BoardFrame extends JFrame implements ActionListener{
     AboutUs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
 
+
   public void actionPerformed(ActionEvent ae) {
+      BoardFrame.setSavingsAccount(0);
+      BoardFrame.setScoreStatus(0);
+      BoardFrame.setMessageSent("");
+
       String choice = ae.getActionCommand();
       if (choice.equals("Get Started!")) {
         level.setVisible(true);
@@ -249,8 +281,10 @@ public class BoardFrame extends JFrame implements ActionListener{
         Parents.setVisible(false);
         String value = JOptionPane.showInputDialog("Deposit Amount:");
         int amount = Integer.parseInt(value);
-        savingsAccount += amount;
-        String output = "Current Savings Amount is: $" + Integer.valueOf(savingsAccount);
+        int temp2 = BoardFrame.getSavingsAccount();
+        int summation = temp2 + amount;
+        BoardFrame.setSavingsAccount(summation);
+        String output = "Current Savings Amount is: $" + Integer.valueOf(BoardFrame.getSavingsAccount());
         JOptionPane.showMessageDialog(null, output);
         DepositMoney.setVisible(false);
         Parents.setVisible(true);
@@ -259,7 +293,7 @@ public class BoardFrame extends JFrame implements ActionListener{
       else if (choice.equals("Message")) {
         Parents.setVisible(false);
         String value = JOptionPane.showInputDialog("Message:");
-        message = value;
+        BoardFrame.setMessageSent(value);
         Parents.setVisible(true);
       }
 
@@ -345,13 +379,13 @@ public class BoardFrame extends JFrame implements ActionListener{
 
       else if (choice.equals("Check Messages")) {
         Child.setVisible(false);
-        if (message.equals("")){
+        if (BoardFrame.messageSent.equals("")){
           String out = "No Messages at this time";
           JOptionPane.showMessageDialog(null, out);
           Child.setVisible(true);
         }
         else {
-          JOptionPane.showMessageDialog(null, message);
+          JOptionPane.showMessageDialog(null, BoardFrame.getMessageSent());
           Child.setVisible(true);
         }
       }
@@ -360,34 +394,58 @@ public class BoardFrame extends JFrame implements ActionListener{
         Child.setVisible(false);
         Random r = new Random();
         int rand = r.nextInt(7);
+        int result = 0;
+        int temp = 0;
+        int sum = 0;
         String event = "";
         if (rand == 0) {
             event += "SPEND: One of your friends is having a birthday party, you must get them a gift. Withdraw $20 from your account.";
-            savingsAccount -= 20;
+            result = -20;
+            temp = BoardFrame.getSavingsAccount();
+            sum = result + temp;
+            BoardFrame.setSavingsAccount(sum);
         }
         if (rand == 1){
           event += "SAVE: Your parents just gave you $20 for doing household chores! Add $20 to your account!";
-          savingsAccount += 20;
+          result = 20;
+          temp = BoardFrame.getSavingsAccount();
+          sum = result + temp;
+          BoardFrame.setSavingsAccount(sum);
         }
         else if (rand == 2) {
           event += "SAVE: You have recently been offered a position at the local ice cream shop! You will be making $8.00 per hour! Add $76.00 to your account weekly!";
-          savingsAccount += 76;
+          result = 76;
+          temp = BoardFrame.getSavingsAccount();
+          sum = result + temp;
+          BoardFrame.setSavingsAccount(sum);
         }
         else if (rand == 3){
           event += "SPEND: Your friends want to go to the movies this weekend. Withdraw $15 from your account.";
-          savingsAccount -= 15;
+          result = -15;
+          temp = BoardFrame.getSavingsAccount();
+          sum = result + temp;
+          BoardFrame.setSavingsAccount(sum);
         }
         else if (rand == 4){
           event += "SAVE: You did some yardwork for an elderly neighbor! Add $30 to your account!";
-          savingsAccount += 30;
+          result = 30;
+          temp = BoardFrame.getSavingsAccount();
+          sum = result + temp;
+          BoardFrame.setSavingsAccount(sum);
         }
         else if (rand == 5){
           event += "SPEND: You broke your mom's favorite vase. In order to take accountability for your actions, you will replace the vase. Withdraw $50 from your account.";
-          savingsAccount -= 50;
+          result = -50;
+          temp = BoardFrame.getSavingsAccount();
+          sum = result + temp;
+          BoardFrame.setSavingsAccount(sum);
         }
         else if (rand == 6){
           event+= "SAVE: You recently had a lemonade stand with some friends on a hot summer day. Add $10 to your account.";
-          savingsAccount += 10;
+          result = 10;
+          temp = BoardFrame.getSavingsAccount();
+          sum = result + temp;
+          BoardFrame.setSavingsAccount(sum);
         }
         String output = "Your event today is: " + event;
         JOptionPane.showMessageDialog(null, output);

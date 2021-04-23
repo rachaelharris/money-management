@@ -12,7 +12,6 @@ public class BoardFrame extends JFrame implements ActionListener{
   JFrame level = new JFrame(); //second frame, asks the user to indicate their level -- parent or child player
   JFrame Parents = new JFrame(); //parent home page
   JFrame Child = new JFrame(); //child player home page
-  JFrame Status = new JFrame(); //child status checker
   JFrame Global = new JFrame(); //global leadership
   JFrame ParentSettings = new JFrame(); //parent settings page
   JFrame Transaction = new JFrame(); //view transactions from parents point of view
@@ -30,7 +29,6 @@ public class BoardFrame extends JFrame implements ActionListener{
   JButton BackAgain = new JButton("Previous Page"); //extra back button for Global page
   JButton ParentalSettings = new JButton("Parent Settings"); //change settings from parental pov
   public int savingsAccount = 0;
-  public double scoreStatus = (savingsAccount / 100) * 0.1234;
   public String message = "";
 
   BoardFrame() {
@@ -128,7 +126,7 @@ public class BoardFrame extends JFrame implements ActionListener{
     Global.setTitle("Money Management");
     JLabel GlobalLabel = new JLabel("Global");
     Global.add(GlobalLabel);
-    JLabel GlobalText = new JLabel("Top player: \tName: Rachael Harris \tSavings: $10,000 \tScore: 4,321");
+    JLabel GlobalText = new JLabel("Top player: \tName: Rachael Harris \tSavings: $10,000");
     Global.add(GlobalText);
     //@ front end team <3 add more / make this look nice
     // add more top players if you can (these can be hard coded)
@@ -152,20 +150,6 @@ public class BoardFrame extends JFrame implements ActionListener{
     Transaction.setLayout(new GridLayout(4,2));
     Transaction.setResizable(false);
     Transaction.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-    Status.setTitle("Money Management");
-    JLabel StatusLabel = new JLabel("Status");
-    Status.add(StatusLabel);
-    JLabel StatusText = new JLabel("Name: [insert child name] \tAmount in savings account: $" + savingsAccount + "\tscore: " + scoreStatus);
-    Status.add(StatusText);
-    //@ front end team <3 add more / make this look nice
-    //also, try to add recent transactions if you can (these can be hard coded)
-    Status.add(PreviousView);
-    PreviousView.addActionListener(this);
-    Status.setSize(500, 500);
-    Status.setLayout(new GridLayout(4,2));
-    Status.setResizable(false);
-    Status.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     ParentSettings.setTitle("Money Management");
     JLabel SettingsLabel = new JLabel("Parent Settings");
@@ -323,7 +307,8 @@ public class BoardFrame extends JFrame implements ActionListener{
 
       else if(choice.equals("Check Status")) {
         Child.setVisible(false);
-        Status.setVisible(true);
+        JOptionPane.showMessageDialog(null, "The Amount in your savings account is: $"+ savingsAccount);
+        Child.setVisible(true);
       }
 
       else if (choice.equals("Check Messages")) {
@@ -348,7 +333,7 @@ public class BoardFrame extends JFrame implements ActionListener{
             event += "SPEND: One of your friends is having a birthday party, you must get them a gift. Withdraw $20 from your account.";
             savingsAccount -= 20;
         }
-        if (rand == 1){
+        else if (rand == 1){
           event += "SAVE: Your parents just gave you $20 for doing household chores! Add $20 to your account!";
           savingsAccount += 20;
         }
@@ -374,12 +359,8 @@ public class BoardFrame extends JFrame implements ActionListener{
         }
         String output = "Your event today is: " + event;
         JOptionPane.showMessageDialog(null, output);
+        JOptionPane.showMessageDialog(null, "The Amount in your savings account is: $"+ savingsAccount);
         Child.setVisible(true);
-      }
-
-      else if(choice.equals("Home Page")) {
-        Child.setVisible(true);
-        Status.setVisible(false);
       }
 
       else if(choice.equals("Global")) {

@@ -20,13 +20,11 @@ public class BoardFrame extends JFrame implements ActionListener{
   JFrame Child = new JFrame(); //child player home page
   JFrame Status = new JFrame(); //child status checker
   JFrame Global = new JFrame(); //global leadership
-  JFrame Settings = new JFrame(); //child settings page
   JFrame ParentSettings = new JFrame(); //parent settings page
-  JFrame TransactionsView = new JFrame(); //view transactions from parents point of view
+  JFrame Transaction = new JFrame(); //view transactions from parents point of view
   JButton Home = new JButton("Home"); //home view button for child
   JButton StatusChecker = new JButton("Check Status"); //check score and transactions for child
   JButton GlobalStatus = new JButton("Global"); //check global ranking for child
-  JButton SettingsButton = new JButton("Settings"); //check child settings
   JButton HomeView = new JButton("Home View"); //home view button for parent
   JButton Transactions = new JButton("Check Transactions"); //check transaction log from parents point of view
   JButton ParentalSettings = new JButton("Parent Settings"); //change settings from parental pov
@@ -115,9 +113,6 @@ public class BoardFrame extends JFrame implements ActionListener{
     //Adding global status checker button from other class
     Child.add(GlobalStatus);
     GlobalStatus.addActionListener(this);
-    //Adding settings button from other class
-    Child.add(SettingsButton);
-    SettingsButton.addActionListener(this);
     //Adding status checker button from other class
     Child.add(StatusChecker);
     StatusChecker.addActionListener(this);
@@ -129,44 +124,70 @@ public class BoardFrame extends JFrame implements ActionListener{
     Global.setTitle("Money Management");
     JLabel GlobalLabel = new JLabel("Global");
     Global.add(GlobalLabel);
-    JLabel GlobalText = new JLabel("Name/Savings/Score");
-    //add more / make this look nice
+    JLabel GlobalText = new JLabel("Top player: \tName: Rachael Harris \tSavings: $10,000 \tScore: 4,321");
+    Global.add(GlobalText);
+    //@ front end team <3 add more / make this look nice
+    // add more top players if you can (these can be hard coded)
     Global.setSize(500, 500);
     Global.setLayout(new GridLayout(4,2));
     Global.setResizable(false);
     Global.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    ParentalSettings.setTitle("Money Management");
-    JLabel SettingsLabel = new JLabel("Settings");
-    Settings.add(SettingsLabel);
+    Transaction.setTitle("Money Management");
+    JLabel TransactionLabel = new JLabel("Transaction");
+    Transaction.add(TransactionLabel);
+    JLabel TransactionText = new JLabel("Date: 4/21 \t Withdrawl \nAmount: \t$500");
+    Transaction.add(TransactionText);
+    //@ front end team <3 add more / make this look nice
+    //also, try to add more transactions if you can (these can be hard coded)
+    Transaction.setSize(500, 500);
+    Transaction.setLayout(new GridLayout(4,2));
+    Transaction.setResizable(false);
+    Transaction.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    Status.setTitle("Money Management");
+    JLabel StatusLabel = new JLabel("Status");
+    Status.add(StatusLabel);
+    JLabel StatusText = new JLabel("Name: [insert child name] \tScore: [insert child score]");
+    Status.add(StatusText);
+    //@ front end team <3 add more / make this look nice
+    //also, try to add recent transactions if you can (these can be hard coded)
+    Status.setSize(500, 500);
+    Status.setLayout(new GridLayout(4,2));
+    Status.setResizable(false);
+    Status.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    ParentSettings.setTitle("Money Management");
+    JLabel SettingsLabel = new JLabel("Parent Settings");
+    ParentSettings.add(SettingsLabel);
     JButton NameChange = new JButton();
     NameChange.setText("Name Change");
-    ParentalSettings.add(NameChange);
+    ParentSettings.add(NameChange);
     NameChange.addActionListener(this);
     JButton PlanChange = new JButton();
     PlanChange.setText("Plan Change");
-    ParentalSettings.add(PlanChange);
+    ParentSettings.add(PlanChange);
     PlanChange.addActionListener(this);
     JButton AddInfo = new JButton();
     AddInfo.setText("Add Bank Information");
-    ParentalSettings.add(AddInfo);
+    ParentSettings.add(AddInfo);
     AddInfo.addActionListener(this);
     JButton FAQ = new JButton();
     FAQ.setText("FAQ");
-    ParentalSettings.add(FAQ);
+    ParentSettings.add(FAQ);
     FAQ.addActionListener(this);
     JButton About = new JButton();
     About.setText("About");
-    Settings.add(About);
+    ParentSettings.add(About);
     About.addActionListener(this);
     JButton Contact = new JButton();
     Contact.setText("Contact Us");
-    Settings.add(Contact);
+    ParentSettings.add(Contact);
     Contact.addActionListener(this);
-    ParentalSettings.setSize(500, 500);
-    ParentalSettings.setLayout(new GridLayout(4,2));
-    ParentalSettings.setResizable(false);
-    ParentalSettings.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    ParentSettings.setSize(500, 500);
+    ParentSettings.setLayout(new GridLayout(4,2));
+    ParentSettings.setResizable(false);
+    ParentSettings.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
 
   public void actionPerformed(ActionEvent ae) {

@@ -29,7 +29,7 @@ This tool will provide a game-like experience for young adolescents to encourage
   - Parent settings to change the difficulty, read more about the game, or even add bank information
  
  - Child Point of view
-    - Roll for a Life Event, which will cause the child to either have to save or spend money
+    - Roll for a Life Event, which will cause the child to either save or spend money
     - Check the Global status of the top 3 game players
     - Check the status of their current savings account
     - Check messages that their parents or guardians have sent to them
